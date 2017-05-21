@@ -1,0 +1,108 @@
+/*
+  materiacalc.css
+
+  Copyright (c) 2017 Palmtree Software
+
+  This software is released under the MIT License.
+  https://opensource.org/licenses/MIT
+*/
+
+#loadingview {
+    /*margin-left:5em;*/
+    margin-top:2em;
+    font-size:200%;
+}
+#loadingprogress {
+    color: blue;
+}
+#loadingprogressbarcountstyle {
+    width:2em;
+    display:inline-block;
+    text-align:right;
+}
+.priceheaderstyle {
+    text-align:right;
+}
+.priceboxstyle {
+    width:6em;
+    text-align:right;
+}
+.itemnotusedtextstyle {
+    color: red;
+    font-weight: bold;
+}
+.successratecolumnstyle {
+    text-align:right;
+}
+.errortextcontrolstyle {
+    border: solid 2px red;
+}
+.errormessagetextstyle {
+  color: red;
+  font-weight: bold;
+}
+.errormessageiconstyle {
+  background-color: red;
+  border-radius: 0.25em;
+  color: white;
+  font-weight: bold;
+  position:relative;
+}
+.errormessageiconstyle:hover {
+  background-color: darkred;
+}
+.errormessagetooltipstyle {
+  position: absolute;
+  bottom: -4em;
+  left: -10em;
+  z-index: 9999;
+  padding: 0.3em 0.5em;
+  color: #FFFFFF;
+  background-color: crimson;
+  border-radius: 0.5em;
+  width:10em;
+}
+.errormessagetooltipstyle:after {
+width: 100%;
+  content: "";
+  display: block;
+  position: absolute;
+  left: 10em;
+  top: -8px;
+  border-top: 8px solid transparent;
+  border-left: 8px solid crimson;
+}
+.notsafetymateriastyle {
+    background-color: #ffccee;
+}
+.usedmateriastyle {
+    color: gray;
+    background-color: whitesmoke;
+}
+.notdefaultcatalyststyle {
+    color: darkred;
+    font-weight: bold;
+}
+.toolargestatusvaluestyle {
+    color: darkred;
+    font-weight: bold;
+}
+.radiobuttonlabelstyle {
+    display:inline-block;
+}
+.itempricesettingbuttonsstyle {
+    text-align: right;
+}
+.copyrightblockstyle {
+    font-size: 70%;
+}
+.versioninfoblockstyle {
+    font-size: 70%;
+    margin-left: 1em;
+}
+table {
+    border-collapse: collapse;
+}
+td {
+    padding: 0.2em;
+}

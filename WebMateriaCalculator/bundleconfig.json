@@ -1,0 +1,17 @@
+[
+  {
+    "outputFileName": "Contents/materiacalcscript.js",
+    "inputFiles": [
+      "Contents/jsutf.js",
+      "Contents/linqling.js",
+      "Contents/rawinflate.js",
+      "Contents/materiacalc.js"
+    ]
+  },
+  {
+    "outputFileName": "Contents/materiacalc.min.css",
+    "inputFiles": [
+      "Contents/materiacalc.css"
+    ]
+  }
+]
