@@ -50,8 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Catalyst.cs" />
-    <Compile Include="CatalystID.cs" />
     <Compile Include="GlobalID.cs" />
     <Compile Include="Grade.cs" />
     <Compile Include="GradeID.cs" />

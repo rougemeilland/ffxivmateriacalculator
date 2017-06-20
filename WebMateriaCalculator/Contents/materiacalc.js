@@ -225,7 +225,6 @@ $(function () {
         var master_items = master_data.items,
             master_grades = master_data.grades,
             master_status = master_data.status,
-            master_catalysts = master_data.catalysts,
             master_materias = master_data.materias,
             master_materia_counts = master_data.materia_counts,
             master_permutation_table = master_data.permutation_table,
@@ -241,10 +240,10 @@ $(function () {
             $.each(master_status, function (index, status) {
                 if (status !== null) {
                     selection_items += "<option value=\"" +
-                                       status.status_id +
-                                       "\">" +
-                                       status.name[lang] +
-                                       "<\/option>";
+                        status.status_id +
+                        "\">" +
+                        status.name[lang] +
+                        "<\/option>";
                 }
             });
             return selection_items;
@@ -256,12 +255,12 @@ $(function () {
                 var max_status_value = master_max_status_values[status_id][maximum_grade_id];
                 for (var status_value = 1; status_value <= max_status_value; ++status_value) {
                     selection_items += "<option value=\"" +
-                                       status_value +
-                                       "\"" +
-                                       (status_value === 1 ? " selected=\"selected\"" : "") +
-                                       ">+" +
-                                       status_value +
-                                       "<\/option>";
+                        status_value +
+                        "\"" +
+                        (status_value === 1 ? " selected=\"selected\"" : "") +
+                        ">+" +
+                        status_value +
+                        "<\/option>";
                 }
             }
             return selection_items;
@@ -272,40 +271,40 @@ $(function () {
             var notusedmateriatext = $("#notusedmateriatext").val();
             function BuildGetItemPriceListRow(item_id, item_name, ex_name, ex_value, official_site_db_id) {
                 return "<tr data-" +
-                       ex_name +
-                       "=\"" +
-                       ex_value +
-                       "\" data-itempriceavailable=\"false\" style=\"display:none;\"><td class=\"priceheaderstyle\"><a href=\"http://jp.finalfantasyxiv.com/lodestone/playguide/db/item/" +
-                       official_site_db_id +
-                       "/\" target=\"_blank\">" +
-                       item_name +
-                       "</a></td><td><input type=\"checkbox\" id=\"itemused" +
-                       item_id +
-                       "\" data-itemid=\"" +
-                       item_id +
-                       "\" data-itempriceid=\"itemprice" +
-                       item_id +
-                       "\" data-itemnotusedtextid=\"itemnotusedtext" +
-                       item_id +
-                       "\" data-itempriceerrormessageid=\"itempriceerrormessage" +
-                       item_id +
-                       "\"/><input type=\"text\" id=\"itemprice" +
-                       item_id +
-                       "\" class=\"priceboxstyle\" data-itemid=\"" +
-                       item_id +
-                       "\" data-itemusedid=\"itemused" +
-                       item_id +
-                       "\" data-itempriceerrormessageid=\"itempriceerrormessage" +
-                       item_id +
-                       "\"/>" +
-                       gil_name +
-                       "</td><td><span id=\"itemnotusedtext" +
-                       item_id +
-                       "\" class=\"itemnotusedtextstyle\" style=\"display:none;\"> " +
-                       notusedmateriatext +
-                       "</span><span id=\"itempriceerrormessage" +
-                       item_id +
-                       "\" data-text=\"\" class=\"errormessageiconstyle\" style=\"display:none;\">！</span></td></tr>";
+                    ex_name +
+                    "=\"" +
+                    ex_value +
+                    "\" data-itempriceavailable=\"false\" style=\"display:none;\"><td class=\"priceheaderstyle\"><a href=\"http://jp.finalfantasyxiv.com/lodestone/playguide/db/item/" +
+                    official_site_db_id +
+                    "/\" target=\"_blank\">" +
+                    item_name +
+                    "</a></td><td><input type=\"checkbox\" id=\"itemused" +
+                    item_id +
+                    "\" data-itemid=\"" +
+                    item_id +
+                    "\" data-itempriceid=\"itemprice" +
+                    item_id +
+                    "\" data-itemnotusedtextid=\"itemnotusedtext" +
+                    item_id +
+                    "\" data-itempriceerrormessageid=\"itempriceerrormessage" +
+                    item_id +
+                    "\"/><input type=\"text\" id=\"itemprice" +
+                    item_id +
+                    "\" class=\"priceboxstyle\" data-itemid=\"" +
+                    item_id +
+                    "\" data-itemusedid=\"itemused" +
+                    item_id +
+                    "\" data-itempriceerrormessageid=\"itempriceerrormessage" +
+                    item_id +
+                    "\"/>" +
+                    gil_name +
+                    "</td><td><span id=\"itemnotusedtext" +
+                    item_id +
+                    "\" class=\"itemnotusedtextstyle\" style=\"display:none;\"> " +
+                    notusedmateriatext +
+                    "</span><span id=\"itempriceerrormessage" +
+                    item_id +
+                    "\" data-text=\"\" class=\"errormessageiconstyle\" style=\"display:none;\">！</span></td></tr>";
             }
             var price_list = "";
             $.each(master_materias, function (index, materia) {
@@ -313,13 +312,6 @@ $(function () {
                     var item_id = materia.item_id,
                         item = master_items[item_id];
                     price_list += BuildGetItemPriceListRow(item_id, item.name[lang], "materiaid", materia.materia_id, item.official_site_db_id);
-                }
-            });
-            $.each(master_catalysts, function (index, catalyst) {
-                if (catalyst !== null) {
-                    var item_id = catalyst.item_id,
-                        item = master_items[item_id];
-                    price_list += BuildGetItemPriceListRow(item_id, item.name[lang], "catalystid", catalyst.catalyst_id, item.official_site_db_id);
                 }
             });
             //console.log(price_list);
@@ -376,13 +368,13 @@ $(function () {
 
         function RefreshItemPriceVisibility() {
             var status_ids = ["statustype1", "statustype2", "statustype3", "statustype4", "statustype5"]
-                             .select(function (element_id) {
-                                 return ParseIDString($("#" + element_id).val());
-                             })
-                             .where(function (status_id) {
-                                 return status_id > 0;
-                             })
-                             .distinct();
+                .select(function (element_id) {
+                    return ParseIDString($("#" + element_id).val());
+                })
+                .where(function (status_id) {
+                    return status_id > 0;
+                })
+                .distinct();
             var maximum_grade_id = ParseIDString($("#maximumgradeid").val());
             //$("tr[data-itemid]").attr("xxx", "zzz");
             $("#itempricelist tr[data-itempriceavailable]").each(function (index, element) {
@@ -398,14 +390,8 @@ $(function () {
                         $(element).removeAttr("data-availableitemprice").hide();
                 }
                 else {
-                    var catalyst_id = $(element).data("catalystid");
-                    if (catalyst_id !== undefined) {
-                        $(element).attr("data-availableitemprice", "true").show();
-                    }
-                    else {
-                        // 予期しないtrが見つかった。
-                        //nop
-                    }
+                    // 予期しないtrが見つかった。
+                    //nop
                 }
             });
         }
@@ -418,13 +404,13 @@ $(function () {
                 { status_type_id: "statustype4", status_value_id: "statusvalue4" },
                 { status_type_id: "statustype5", status_value_id: "statusvalue5" }
             ]
-            .any(function (x) {
-                //console.log("x.status_type_id=" + x.status_type_id);
-                //console.log("x.status_value_id=" + x.status_value_id);
-                var status_id = ParseIDString($("#" + x.status_type_id).val()),
-                    value = ParseNumberString($("#" + x.status_value_id).val());
-                return status_id > 0 && status_id < master_status.length && value > 0;
-            });
+                .any(function (x) {
+                    //console.log("x.status_type_id=" + x.status_type_id);
+                    //console.log("x.status_value_id=" + x.status_value_id);
+                    var status_id = ParseIDString($("#" + x.status_type_id).val()),
+                        value = ParseNumberString($("#" + x.status_value_id).val());
+                    return status_id > 0 && status_id < master_status.length && value > 0;
+                });
             if (ok) {
                 var maximum_grade_id = ParseIDString($("#maximumgradeid").val());
                 if (maximum_grade_id <= 0 || maximum_grade_id >= master_grades.length)
@@ -486,9 +472,15 @@ $(function () {
                                 break;
                             case "radio":
                                 if (setting_info.fire_event)
-                                    $("input[name='" + element_id + "']").val([value]).change;
+                                    $("input[name='" + element_id + "']").val([value]).change();
                                 else
                                     $("input[name='" + element_id + "']").val([value]);
+                                break;
+                            case "checkbox":
+                                if (setting_info.fire_event)
+                                    $("#" + element_id).prop("checked", value).change();
+                                else
+                                    $("#" + element_id).prop("checked", value);
                                 break;
                             default:
                                 break;
@@ -542,26 +534,29 @@ $(function () {
                     case "radio":
                         settings[element_id] = $("input[name='" + element_id + "']:checked").val();
                         break;
+                    case "checkbox":
+                        settings[element_id] = $("#" + element_id).prop("checked");
+                        break;
                     default:
                         break;
                 }
             });
             localStorage.settings = JSON.stringify(settings);
             var item_prices = master_items
-                             .where(function (item) {
-                                 return item !== null;
-                             })
-                             .toObject(function (item) {
-                                 return item.global_item_id;
-                             }, function (item) {
-                                 var item_id = item.item_id;
-                                 if (!$("#itemused" + item_id).prop("checked"))
-                                     return "*";
-                                 else {
-                                     var price = ParsePriceNumberString($("#itemprice" + item_id).val());
-                                     return price > 0 ? price.toString() : "";
-                                 }
-                             });
+                .where(function (item) {
+                    return item !== null;
+                })
+                .toObject(function (item) {
+                    return item.global_item_id;
+                }, function (item) {
+                    var item_id = item.item_id;
+                    if (!$("#itemused" + item_id).prop("checked"))
+                        return "*";
+                    else {
+                        var price = ParsePriceNumberString($("#itemprice" + item_id).val());
+                        return price > 0 ? price.toString() : "";
+                    }
+                });
             localStorage.item_prices = JSON.stringify(item_prices);
         }
 
@@ -595,54 +590,17 @@ $(function () {
                         }
                     });
                 });
-                var catalyst_item_ids = [];
-                $.each(master_grades, function (grade_id, grade) {
-                    if (grade !== null && grade_id <= maximum_grade_id) {
-                        $.each(grade.catalyst_ids, function (index, catalyst_id) {
-                            var catalyst_item_id = master_catalysts[catalyst_id].item_id;
-                            if (catalyst_item_ids.indexOf(catalyst_item_id) < 0)
-                                catalyst_item_ids.push(catalyst_item_id);
-                        });
-                    }
-                });
-                catalyst_item_ids.sort();
-                return materia_item_ids.concat(catalyst_item_ids);
+                return materia_item_ids;
             }
 
             function CheckItemPriceList(item_price_list, desired_status, maximum_grade_id) {
                 //console.log("item_price_list=" + JSON.stringify(item_price_list));
                 var r = QueryComsumedItemIDs(desired_status, maximum_grade_id)
-                       .all(function (item_id) {
-                           return item_price_list.hasOwnProperty(item_id);
-                       });
+                    .all(function (item_id) {
+                        return item_price_list.hasOwnProperty(item_id);
+                    });
                 //console.log("r=" + r);
                 return r;
-            }
-
-            function GetCatalystIDTable(item_price_list) {
-                return master_grades
-                       .select(function (grade) {
-                           if (grade === null)
-                               return null;
-                           else {
-                               var found = grade.catalyst_ids
-                                           .select(function (catalyst_id, index) {
-                                               var item_id = master_catalysts[catalyst_id].item_id,
-                                                   item_price = item_price_list.hasOwnProperty(item_id) ? item_price_list[item_id] : -1;
-                                               return {
-                                                   catalyst_id: catalyst_id,
-                                                   is_default_catalyst_id: index === 0,
-                                                   catalyst_price: item_price
-                                               };
-                                           })
-                                           .least(function (x) {
-                                               return x.catalyst_price;
-                                           }, function (x) {
-                                               return x.catalyst_price > 0;
-                                           });
-                               return found === undefined ? null : found;
-                           }
-                       });
             }
 
             function BuildMateriaCombinations(desired_status) {
@@ -782,7 +740,7 @@ $(function () {
                 }
             }
 
-            function GetLeastCostMaterias(combination, desired_status, item_price_list, catalyst_id_by_grade_id, is_high_quality, materia_slot_count, used_materia_count) {
+            function GetLeastCostMaterias(combination, desired_status, item_price_list, is_high_quality, materia_slot_count, used_materia_count) {
                 function GetMateriaIDsOrderByCombinationPattern(source_materia_ids, pattern) {
                     var materia_ids = [];
                     $.each(pattern, function (index, pattern_element) {
@@ -791,14 +749,13 @@ $(function () {
                     return materia_ids;
                 }
 
-                function CalculateCost(desired_status, materia_ids, item_price_list, catalyst_id_by_grade_id, is_high_quality, materia_slot_count, used_materia_count) {
+                function CalculateCost(desired_status, materia_ids, item_price_list, is_high_quality, materia_slot_count, used_materia_count) {
                     var desired_status_values = {};
                     $.each(desired_status, function (index, desired_status_element) {
                         desired_status_values[desired_status_element.status_id] = desired_status_element.value;
                     });
                     var total_cost = 0.0,
                         materias = [],
-                        not_used_catalyst_ids = [],
                         status_values = {};
                     $.each(materia_ids, function (index, materia_id) {
                         var materia = master_materias[materia_id],
@@ -822,20 +779,7 @@ $(function () {
                             desired_status_value = desired_status_values[status_key],
                             is_too_large_value = status_values[status_key] > desired_status_values[status_key],
                             effective_status_value = (total_status_value > desired_status_value ? desired_status_value : total_status_value) - (previous_total_status_value > desired_status_value ? desired_status_value : previous_total_status_value),
-                            grade = master_grades[materia.grade_id],
-                            catalyst_info = catalyst_id_by_grade_id[materia.grade_id];
-                        // 使用するマテリアのグレードに最適な触媒が存在しない場合は計算失敗
-                        if (catalyst_info === null) {
-                            //console.log("Calculation faild.: " + "catalyst_info === null");
-                            total_cost = NaN;
-                            return false; // break
-                        }
-                        var catalyst_id = catalyst_info.catalyst_id,
-                            is_default_catalyst = catalyst_info.is_default_catalyst_id;
-                        $.each(grade.catalyst_ids, function (catalyst_ids_index, catalyst_ids_element) {
-                            if (catalyst_ids_element < catalyst_id && not_used_catalyst_ids.indexOf(catalyst_ids_element) < 0)
-                                not_used_catalyst_ids.push(catalyst_ids_element);
-                        });
+                            grade = master_grades[materia.grade_id];
                         // 使用するマテリアの相場が未設定の場合は計算失敗
                         if (!item_price_list.hasOwnProperty(materia.item_id)) {
                             //console.log("Calculation faild.: " + "!item_price_list.hasOwnProperty(materia.item_id)");
@@ -849,17 +793,12 @@ $(function () {
                             total_cost = NaN;
                             return false; // break
                         }
-                        var catalyst = master_catalysts[catalyst_id],
-                            catalyst_item = master_items[catalyst.item_id],
-                            catalyst_name = catalyst_item.name[lang],
-                            catalyst_official_site_db_id = catalyst_item.official_site_db_id,
-                            catalyst_price = catalyst_info.catalyst_price,
-                            success_rates = is_high_quality ? grade.success_rate_hq : grade.success_rate_nq,
+                        var success_rates = is_high_quality ? grade.success_rate_hq : grade.success_rate_nq,
                             count = used_materia_count + index,
                             cost;
                         if (count < materia_slot_count) {
                             // 禁断ではない場合 => 成功率100%
-                            cost = materia_price + catalyst_price;
+                            cost = materia_price;
                             materias.push({
                                 index: count,
                                 is_safety: true,
@@ -871,17 +810,19 @@ $(function () {
                                 status_value: status_value,
                                 effective_status_value: effective_status_value,
                                 is_too_large_value: is_too_large_value,
-                                catalyst_name: catalyst_name,
-                                catalyst_official_site_db_id: catalyst_official_site_db_id,
-                                catalyst_price: catalyst_price,
-                                is_default_catalyst: is_default_catalyst,
-                                cost: materia_price + catalyst_price
+                                cost: materia_price
                             });
                         }
                         else if (count < 5) {
                             // 禁断の場合
+
+                            // 禁断成功率が0なら計算失敗
+                            if (success_rate <= 0.0) {
+                                total_cost = NaN;
+                                return false; // break
+                            }
                             var success_rate = success_rates[count - materia_slot_count];
-                            cost = (materia_price + catalyst_price) / success_rate;
+                            cost = materia_price / success_rate;
                             materias.push({
                                 index: count,
                                 is_safety: false,
@@ -893,11 +834,7 @@ $(function () {
                                 status_value: status_value,
                                 effective_status_value: effective_status_value,
                                 is_too_large_value: is_too_large_value,
-                                catalyst_name: catalyst_name,
-                                catalyst_official_site_db_id: catalyst_official_site_db_id,
-                                catalyst_price: catalyst_price,
-                                is_default_catalyst: is_default_catalyst,
-                                cost: materia_price + catalyst_price
+                                cost: materia_price
                             });
                         }
                         else {
@@ -907,19 +844,9 @@ $(function () {
                     });
                     if (isNaN(total_cost))
                         return null;
-                    not_used_catalyst_ids.sort();
-                    var not_used_catalysts = [];
-                    $.each(not_used_catalyst_ids, function (not_used_catalyst_ids_index, not_used_catalyst_ids_element) {
-                        var item = master_items[master_catalysts[not_used_catalyst_ids_element].item_id];
-                        not_used_catalysts.push({
-                            item_name: item.name[lang],
-                            official_site_db_id: item.official_site_db_id
-                        });
-                    });
                     return {
                         total_cost: Math.round(total_cost),
-                        materias: materias,
-                        not_used_catalysts: not_used_catalysts
+                        materias: materias
                     };
                 }
 
@@ -929,7 +856,7 @@ $(function () {
                     var pattern_array = master_permutation_table[combination_element.length];
                     $.each(pattern_array, function (pattern_index, pattern) {
                         var materia_ids = GetMateriaIDsOrderByCombinationPattern(combination_element, pattern),
-                            current_cost = CalculateCost(desired_status, materia_ids, item_price_list, catalyst_id_by_grade_id, is_high_quality, materia_slot_count, used_materia_count);
+                            current_cost = CalculateCost(desired_status, materia_ids, item_price_list, is_high_quality, materia_slot_count, used_materia_count);
                         if (current_cost === null) {
                             // 相場が未設定のアイテムが存在するためコストの計算ができなかった場合
                             // nop
@@ -980,8 +907,7 @@ $(function () {
                         item_prices: result_item_prices
                     },
                     total_cost: least_cost_materias.total_cost,
-                    materias: least_cost_materias.materias,
-                    not_used_catalysts: least_cost_materias.not_used_catalysts
+                    materias: least_cost_materias.materias
                 };
             }
 
@@ -1006,10 +932,9 @@ $(function () {
             if (!CheckItemPriceList(price_list, desired_status, maximum_grade_id))
                 return null;
             var max_combination_array_length = max_materia_count + 1 - desired_status.length,
-                catalyst_id_by_grade_id = GetCatalystIDTable(price_list),
                 materia_combinations_by_status = BuildMateriaCombinations(desired_status),
                 materia_combinations = ConcatinateCombination(materia_combinations_by_status, max_materia_count),
-                least_cost_materias = GetLeastCostMaterias(materia_combinations, desired_status, price_list, catalyst_id_by_grade_id, is_high_quality, materia_slot_count, used_materia_count);
+                least_cost_materias = GetLeastCostMaterias(materia_combinations, desired_status, price_list, is_high_quality, materia_slot_count, used_materia_count);
             if (least_cost_materias === null || least_cost_materias.length <= 0)
                 return null;
             return BuildCalculationResultObject(maximum_grade_id, is_high_quality, materia_slot_count, used_materia_count, desired_status, consider_kindan, price_list, least_cost_materias[0]);
@@ -1030,58 +955,35 @@ $(function () {
                 if (materia.index < minimum_materia_index)
                     minimum_materia_index = materia.index;
                 result_text_materias1 += "<tr" +
-                                         (materia.is_safety ? "" : " class=\"notsafetymateriastyle\"") +
-                                         "><td>" +
-                                         (materia.index + 1) +
-                                         "</td><td><a href=\"http://jp.finalfantasyxiv.com/lodestone/playguide/db/item/" +
-                                         materia.materia_official_site_db_id +
-                                         "/\" target=\"_blank\">" +
-                                         materia.materia_name +
-                                         "</a></td><td>" +
-                                         materia.status_name +
-                                         "<span" +
-                                         (materia.is_too_large_value ? " class=\"toolargestatusvaluestyle\"" : "") +
-                                         ">+" +
-                                         materia.effective_status_value +
-                                         "</span></td><td" +
-                                         (materia.is_default_catalyst ? "" : " class=\"notdefaultcatalyststyle\"") +
-                                         "><a href=\"http://jp.finalfantasyxiv.com/lodestone/playguide/db/item/" +
-                                         materia.catalyst_official_site_db_id +
-                                         "/\" target=\"_blank\">" +
-                                         materia.catalyst_name +
-                                         "</a></td><td class=\"successratecolumnstyle\">" +
-                                         (materia.success_rate * 100).toFixed(0) +
-                                         "%</td></tr>";
+                    (materia.is_safety ? "" : " class=\"notsafetymateriastyle\"") +
+                    "><td>" +
+                    (materia.index + 1) +
+                    "</td><td><a href=\"http://jp.finalfantasyxiv.com/lodestone/playguide/db/item/" +
+                    materia.materia_official_site_db_id +
+                    "/\" target=\"_blank\">" +
+                    materia.materia_name +
+                    "</a></td><td>" +
+                    materia.status_name +
+                    "<span" +
+                    (materia.is_too_large_value ? " class=\"toolargestatusvaluestyle\"" : "") +
+                    ">+" +
+                    materia.effective_status_value +
+                    "</span></td><td class=\"successratecolumnstyle\">" +
+                    (materia.success_rate * 100).toFixed(0) +
+                    "%</td></tr>";
             });
             var result_text_materias2 = "";
             if (minimum_materia_index > 0) {
                 var used_materia_text = $("#usedslottext").val();
                 for (var index = 0; index < minimum_materia_index; ++index) {
                     result_text_materias2 += "<tr class=\"usedmateriastyle\"><td>" +
-                                             (index + 1) +
-                                             "</td><td colspan=\"4\"><span>" +
-                                             used_materia_text +
-                                             "</span></tr>";
+                        (index + 1) +
+                        "</td><td colspan=\"4\"><span>" +
+                        used_materia_text +
+                        "</span></tr>";
                 }
             }
             return result_text_materias2 + result_text_materias1;
-        }
-
-        function GetCalculationResultUnusedCatalysts(calc_result) {
-            if (calc_result.not_used_catalysts.length > 0) {
-                var result_text_warning = "";
-                $.each(calc_result.not_used_catalysts, function (index, catalyst) {
-                    result_text_warning += "<li><a href=\"http://jp.finalfantasyxiv.com/lodestone/playguide/db/item/" +
-                                           catalyst.official_site_db_id +
-                                           "/\" target=\"_blank\">" +
-                                           catalyst.item_name +
-                                           "</a></li>";
-                });
-                return result_text_warning;
-            }
-            else {
-                return "";
-            }
         }
 
         // htmlテキストを設定する。
@@ -1189,13 +1091,6 @@ $(function () {
                 $("#resultdesiredstatustable").text(GetCalculationResultStatus(calc_result));
                 $("#resulttotalcostvalue").text(calc_result.total_cost <= 0 ? "" : calc_result.total_cost.toPriceNumberString());
                 $("#resultmateriastable").html(GetCalculationResultMaterias(calc_result));
-                $("#resultwarninglist").html(GetCalculationResultUnusedCatalysts(calc_result));
-                if ($("#resultwarninglist").html() !== "") {
-                    $("#resultwarningview").show();
-                }
-                else {
-                    $("#resultwarningview").hide();
-                }
                 SwitchView("resultview");
             }
             else {

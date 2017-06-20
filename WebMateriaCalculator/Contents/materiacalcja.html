@@ -14,13 +14,10 @@
                 □□□□□□□□□□
             </span>
             : <span id="loadingprogresspercent">0</span>%
-            <!-- EdgeとIEではvalue属性を設定すると「ぬるっ」とバーがアニメーションで変化するが、ある時間の間スクリプトが実行されない状況でないと表示の更新は行われない(らしい)。
-                時間がかかるネットワークダウンロードの状況を表示するには問題ないが、以下のような場合に問題がある。
-                スクリプトで長時間かかる処理がありその進行状況を表示させたいとする。
-                処理中の途中の区切り毎にprogressタグのvalue属性を更新しsetTimeout(..., 0)&returnで一瞬だけスクリプトを終了してすぐ再開する、ということ繰り返すとする。
-                スクリプトが動いていない時間が一瞬だけであるため、progressタグの表示の更新は行われない(らしい)。
-                スクリプトが最後まで進んで終了するとやっとprogressタグの表示の更新が行われるが、その時には既に進行状況は100%になってしまっているため、progressの表示の意味がない。
-                よって、progressタグ の使用は断念。
+            <!-- EdgeとIEではvalue属性を設定すると「ぬるっ」とバーがアニメーションで変化するが、待機タスクのキューが空でないと表示の更新は行われない(ように見える)。
+                I/O待ち合わせのタスクのみならバーはきちんと再描画されるが、何らかのCPU処理を行っていてその進行状況を表示したい場合は途中経過が表示されず処理が終了した途端に一斉に描画されることになる。(確証はないがそのようにふるまっているように見える)
+                この処理の場合、ダウンロードしたデータの伸長にもっとも時間をかけており、まさに上記の問題に該当するため、進行状況の表示の意味がない。
+                よって、progressタグ の使用は断念し、もっと原始的な表示方法を採用することにした。
             <label>
                 <progress max="100" value="0" id="loadingprogress">
                     <span style="width:2em;" id="loadingprogresspercent1"></span>%
@@ -42,7 +39,8 @@
                             <option value="2">30～44 (マテリア～マテリラが使用可)</option>
                             <option value="3">45～54 (マテリア～マテリダが使用可)</option>
                             <option value="4">55～159 (マテリア～マテリガが使用可)</option>
-                            <option value="5">160～ (マテリア～マテリジャが使用可)</option>
+                            <option value="5">160～289 (マテリア～マテリジャが使用可)</option>
+                            <option value="6">290～ (マテリア～ハイマテリジャが使用可)</option>
                         </select>
                     </td>
                 </tr>
@@ -186,20 +184,17 @@
                         <th></th>
                         <th>装着するマテリア</th>
                         <th>上昇するステータス</th>
-                        <th>使用する触媒</th>
                         <th>成功率</th>
                     </tr>
                 </thead>
                 <tbody id="resultmateriastable"></tbody>
             </table>
         </fieldset>
-        <fieldset id="resultwarningview">
+        <fieldset id="resultwarningview" style="display:none;">
             <legend>注意事項</legend>
             <div>
                 <ol>
                     <li>
-                        より安価な上位の触媒があるため以下の触媒は使用しません。使用しないようにリテイナーに預けるなどして所持品から外しておいてください。
-                        <ul id="resultwarninglist"></ul>
                     </li>
                 </ol>
             </div>
@@ -230,9 +225,25 @@
     </fieldset>
     <fieldset id="outlineview" style="display:none;">
         <legend>はじめに</legend>
+        <div style="margin-top:1em;">
+            <a href="#mainview">計算をする</a>
+        </div>
+
+        <p>初めて利用される方は以下をお読みください。</p>
         <fieldset>
             <legend>本アプリケーションについて</legend>
             <p>このアプリケーションは、<a href="http://jp.finalfantasyxiv.com/">FINAL FANTASY XIV</a>においてマテリアの装着にかかる費用の期待値を計算するものです。</p>
+        </fieldset>
+        <fieldset>
+            <legend>対応バージョン</legend>
+            <p><a href="http://jp.finalfantasyxiv.com/">FINAL FANTASY XIV</a> 4.0 STOOMBLOOD(紅蓮の解放者)に対応作業中です</p>
+            <ul>
+                <li>4.0にてコールマターが不要になったことには対応済みです。</li>
+                <li>
+                    4.0にて実装された「ハイマテリジャ」については相場の入力は可能になっていますが、禁断の成功率が不明で作者もまだ実験できる状況ではないため、暫定的な措置として禁断成功率をNQ/HQともに0%にしてあります。<br />
+                    よって<b>現在のところはハイマテリジャの禁断を使った計算結果が表示されることはありません</b>。NQ/HQ装備のハイマテリジャの禁断成功率が判明し次第反映する予定です。
+                </li>
+            </ul>
         </fieldset>
         <fieldset>
             <legend>必要なもの</legend>
@@ -279,9 +290,6 @@
                 </li>
             </ul>
         </fieldset>
-        <div style="margin-top:1em;">
-            <a href="#mainview">アプリケーションの利用を開始する</a>
-        </div>
     </fieldset>
     <fieldset id="errorview" style="display:none;">
         <legend>エラー</legend>
@@ -306,7 +314,7 @@
                 Copyright (C) 2017 <a href="http://coconuts-palm.cocolog-nifty.com/">Lunor</a> All Rights Reserved.
             </p>
             <p class="versioninfoblockstyle">
-                最終更新日: 2017年5月2日
+                最終更新日: 2017年6月20日
             </p>
         </div>
     </footer>
