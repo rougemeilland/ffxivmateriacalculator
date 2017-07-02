@@ -236,14 +236,7 @@
         </fieldset>
         <fieldset>
             <legend>対応バージョン</legend>
-            <p><a href="http://jp.finalfantasyxiv.com/">FINAL FANTASY XIV</a> 4.0 STOOMBLOOD(紅蓮の解放者)に対応作業中です</p>
-            <ul>
-                <li>4.0にてコールマターが不要になったことには対応済みです。</li>
-                <li>
-                    4.0にて実装された「ハイマテリジャ」については相場の入力は可能になっていますが、禁断の成功率が不明で作者もまだ実験できる状況ではないため、暫定的な措置として禁断成功率をNQ/HQともに0%にしてあります。<br />
-                    よって<b>現在のところはハイマテリジャの禁断を使った計算結果が表示されることはありません</b>。NQ/HQ装備のハイマテリジャの禁断成功率が判明し次第反映する予定です。
-                </li>
-            </ul>
+            <p><a href="http://jp.finalfantasyxiv.com/">FINAL FANTASY XIV</a> 4.0 STOOMBLOOD(紅蓮の解放者)に対応済です</p>
         </fieldset>
         <fieldset>
             <legend>必要なもの</legend>
@@ -266,8 +259,8 @@
                 <li>「計算開始」ボタンを押すと、計算結果として合計費用の期待値がもっとも安価なマテリアの装着順番が表示されます。</li>
             </ol>
             <p>
-                なお、簡単にお試しで使っていただけるように、アイテムの相場の初期設定としてサンプルデータ(某鯖での某月某日の各アイテムの相場)が設定済みになっています。<br />
-                <b>本番で計算をする場合は、マーケットボードなどでアイテムの相場を一通り見直すよう強くお勧めします。</b> 
+                なお、簡単にお試しで使っていただけるように、マテリアの相場の初期設定としてサンプルデータ(某鯖での某月某日の相場)が設定済みになっています。<br />
+                <b>本番で計算をする場合は、マーケットボードでマテリアの相場を設定し直しよう強くお勧めします。</b> 
             </p>
         </fieldset>
         <fieldset>
@@ -295,6 +288,13 @@
         <legend>エラー</legend>
         <div>
             <p class="errormessagetextstyle">指定されたステータスを実現するマテリアの組み合わせがありません。<br />設定を見直してください。</p>
+            <h1>【ヒント】</h1>
+            <ul>
+                <li>対象装備のアイテムレベル/品質/マテリア穴の数を間違えていませんか?</li>
+                <li>使用するかもしれないマテリアの相場をすべて入力していますか?</li>
+                <li>STR/VIT/DEX/INT/MNDのいずれかを禁断しなければ達成できないようなステータスを目標値に設定していませんか?<br /><b>※STR/VIT/DEX/INT/MNDのいずれかのステータスを上げるマテリアを禁断装着することはできません。</b></li>
+                <li>ハイマテリジャを2回目以降の禁断にしようしなければ達成できないようなステータスを目標値に設定していませんか?<br /><b>※ハイマテリジャは禁断の2回目以降に使用することはできません。</b></li>
+            </ul>
             <a href="#mainview">設定を変更して再計算する</a>
         </div>
     </fieldset>
@@ -314,7 +314,7 @@
                 Copyright (C) 2017 <a href="http://coconuts-palm.cocolog-nifty.com/">Lunor</a> All Rights Reserved.
             </p>
             <p class="versioninfoblockstyle">
-                最終更新日: 2017年6月20日
+                最終更新日: 2017年7月3日
             </p>
         </div>
     </footer>
@@ -330,6 +330,6 @@
     <!-- 動的に生成されたタグ(<a href="..." class="eorzeadb_link"></a>)にはツールチップは表示されないらしいので、スクリプトの読み込みは行わない。
         <script src="http://img.finalfantasyxiv.com/lds/pc/global/js/eorzeadb/loader.js?v1"></script>
     -->
-    <script type="text/javascript" src="materiacalcscript.min.js" async="async"></script>
+    <script type="text/javascript" src="materiacalcscript.js" async="async"></script>
 </body>
 </html>

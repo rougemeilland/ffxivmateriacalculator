@@ -2223,12 +2223,17 @@ $(function () {
                         else if (count < 5) {
                             // 禁断の場合
 
-                            // 禁断成功率が0なら計算失敗
-                            if (success_rate <= 0.0) {
+                            if (!status.kindan_enabled) {
+                                // 禁断に使用できないマテリアなら計算失敗
                                 total_cost = NaN;
                                 return false; // break
                             }
                             var success_rate = success_rates[count - materia_slot_count];
+                            if (success_rate <= 0.0) {
+                                // 禁断成功率が0なら計算失敗
+                                total_cost = NaN;
+                                return false; // break
+                            }
                             cost = materia_price / success_rate;
                             materias.push({
                                 index: count,

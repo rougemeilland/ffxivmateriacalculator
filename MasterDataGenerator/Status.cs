@@ -24,7 +24,7 @@ namespace MasterDataGenerator
 
         #region コンストラクタ
 
-        public Status(StatusID status_id, MultiLanguageString name, Func<StatusID, IDictionary<GradeID, MateriaID>> materia_ids_getter)
+        public Status(StatusID status_id, MultiLanguageString name, bool kindan_enabled, Func<StatusID, IDictionary<GradeID, MateriaID>> materia_ids_getter)
         {
             if (status_id == StatusID.None)
                 throw new ArgumentException();
@@ -32,6 +32,7 @@ namespace MasterDataGenerator
                 throw new ArgumentNullException();
             StatusID = status_id;
             Name = name;
+            KindanEnabled = kindan_enabled;
             _materia_ids_getter = materia_ids_getter;
             _materia_ids = null;
         }
@@ -49,6 +50,7 @@ namespace MasterDataGenerator
             var array = new int[max_grade_id - GradeID.None + 1];
             foreach (var grade_id in MateriaIDsIndexedByGradeID.Keys)
                 array[grade_id - GradeID.None] = MateriaIDsIndexedByGradeID[grade_id] - MateriaID.None;
+            dic["kindan_enabled"] = KindanEnabled;
             dic["materia_ids"] = array;
             return (dic);
         }
@@ -59,6 +61,7 @@ namespace MasterDataGenerator
 
         public StatusID StatusID { get; private set; }
         public MultiLanguageString Name { get; private set; }
+        public bool KindanEnabled { get; private set; }
         public IDictionary<GradeID, MateriaID> MateriaIDsIndexedByGradeID
         {
             get

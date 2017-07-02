@@ -106,3 +106,10 @@ table {
 td {
     padding: 0.2em;
 }
+h1 {
+    font-size: larger;
+}
+li {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
