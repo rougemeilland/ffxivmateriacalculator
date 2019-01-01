@@ -6,12 +6,22 @@
       "Contents/linqling.js",
       "Contents/rawinflate.js",
       "Contents/materiacalc.js"
-    ]
-  },
+    ],
+    "minify": {
+      "enabled": true
+    },
+    "sourceMap": false,
+    "sourceMapRootPath": ""
+},
   {
     "outputFileName": "Contents/materiacalc.min.css",
     "inputFiles": [
       "Contents/materiacalc.css"
-    ]
+    ],
+    "minify": {
+      "enabled": true
+    },
+    "sourceMap": false,
+    "sourceMapRootPath": ""
   }
 ]
