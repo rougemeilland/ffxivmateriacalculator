@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>MasterDataGenerator</RootNamespace>
     <AssemblyName>MasterDataGenerator</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,11 +35,11 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Palmtree, Version=1.1.6350.21158, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PalmtreeSoftware.Palmtree.1.1.6350.21158\lib\net46\Palmtree.dll</HintPath>
+    <Reference Include="Palmtree, Version=1.4.7055.40930, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PalmtreeSoftware.Palmtree.1.4.7055.40930\lib\net471\Palmtree.dll</HintPath>
     </Reference>
-    <Reference Include="Palmtree.Collection, Version=1.1.6350.21158, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PalmtreeSoftware.Palmtree.Collection.1.1.6350.21158\lib\net46\Palmtree.Collection.dll</HintPath>
+    <Reference Include="Palmtree.Collection, Version=1.3.7054.30167, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PalmtreeSoftware.Palmtree.Collection.1.3.7054.30167\lib\net471\Palmtree.Collection.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

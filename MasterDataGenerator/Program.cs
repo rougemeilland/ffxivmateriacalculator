@@ -14,6 +14,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Palmtree;
+using Palmtree.Data;
 using Palmtree.Collection;
 
 namespace MasterDataGenerator
@@ -1120,13 +1121,13 @@ namespace MasterDataGenerator
             dic["storage_items"] = storage_items;
             dic["gil_names"] = gil_name.SerializeToObject();
             dic["max_status_values"] = GetMaxStatusValueTable(materias);
-            dic["initial_item_prices"] = SimpleJson.Serialize(default_item_prices.ToDictionary(item => item.Key.ToString(), item => (object)"*"));
-            dic["exsample_item_prices"] = SimpleJson.Serialize(default_item_prices.ToDictionary(item => item.Key.ToString(), item => (object)item.Value));
+            dic["initial_item_prices"] = SimpleJsonSerializer.Serialize(default_item_prices.ToDictionary(item => item.Key.ToString(), item => (object)"*"));
+            dic["exsample_item_prices"] = SimpleJsonSerializer.Serialize(default_item_prices.ToDictionary(item => item.Key.ToString(), item => (object)item.Value));
             //writer.WriteLine(SimpleJson.Serialize(dic, new SerializationFormatParameter { DelimiterArrayComma = "\n", DelimiterArrayLeft = "\n", DelimiterArrayRight = "\n", DelimiterObjecColon = "\n", DelimiterObjecComma = "\n", DelimiterObjectLeft = "\n", DelimiterObjectRight = "\n" }));
-            writer.WriteLine(SimpleJson.Serialize(dic));
-            var x = SimpleJson.Serialize(dic);
-            var y = SimpleJson.Deserialize(x);
-            var z = SimpleJson.Serialize(y);
+            writer.WriteLine(SimpleJsonSerializer.Serialize(dic));
+            var x = SimpleJsonSerializer.Serialize(dic);
+            var y = SimpleJsonDeserializer.Deserialize(x);
+            var z = SimpleJsonSerializer.Serialize(y);
             if (x != z)
                 throw new ApplicationException();
         }

@@ -8,6 +8,7 @@
 */
 
 using System;
+using System.Linq;
 using System.Text;
 using Palmtree;
 
@@ -26,7 +27,7 @@ namespace MasterDataGenerator
 
         public GlobalID(string seed_string)
         {
-            _id = Encoding.UTF8.GetBytes(seed_string).ComputeHashBytes().CompressHashBytes(5).EncodeFromHashBytes();
+            _id = Encoding.UTF8.GetBytes(seed_string).ComputeHashBytes().Take(5).ToArray().ToBase32String();
         }
 
         #endregion
