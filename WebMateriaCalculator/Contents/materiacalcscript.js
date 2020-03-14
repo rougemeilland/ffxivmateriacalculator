@@ -1703,11 +1703,11 @@ $(function () {
                     item_id +
                     "\" data-itempriceerrormessageid=\"itempriceerrormessage" +
                     item_id +
-                    "\"/>" +
+                    "\" disabled/>" +
                     gil_name +
                     "</td><td><span id=\"itemnotusedtext" +
                     item_id +
-                    "\" class=\"itemnotusedtextstyle\" style=\"display:none;\"> " +
+                    "\" class=\"itemnotusedtextstyle\"> " +
                     notusedmateriatext +
                     "</span><span id=\"itempriceerrormessage" +
                     item_id +
