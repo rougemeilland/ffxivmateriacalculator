@@ -519,6 +519,10 @@ $(function () {
                                 $("#itemprice" + item_id).val("").change();
                             }
                         }
+                        else {
+                            // マスターデータがアップグレードしたなどの理由で相場情報が存在しないアイテムがあった場合
+                            $("#itemused" + item_id).prop("checked", false).change();
+                        }
                     }
                 });
             }
