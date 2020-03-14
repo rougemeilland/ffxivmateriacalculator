@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>マテリア装着費用計算機</title>
+    <title>Materia cost calculator</title>
     <link rel="stylesheet" type="text/css" href="materiacalc.min.css" />
     <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </head>
@@ -29,46 +29,46 @@
     </div>
     <div id="mainview" style="display:none;">
         <div class="languagesettingstyle">
-            <label for="language">言語を選択してください: </label>
+            <label for="language">Select language: </label>
             <select onChange="location.href=value;">
-                <option value="#" selected>日本語</option>
+                <option value="materiacalcja.html">日本語</option>
                 <option value="materiacalcen.html">English</option>
                 <option value="materiacalcfr.html">Français</option>
-                <option value="materiacalcde.html">Deutsch</option>
+                <option value="#" selected>Deutsch</option>
             </select>
         </div>
         <fieldset>
-            <legend>装着対象装備の設定</legend>
+            <legend>Equipment setting</legend>
             <table>
                 <tr>
-                    <td style="text-align:right;">アイテムレベル:</td>
+                    <td style="text-align:right;">Item level:</td>
                     <td>
                         <select id="maximumgradeid" name="maximumgradeid">
-                            <option value="1" selected="selected">15～29 (マテリアのみ使用可)</option>
-                            <option value="2">30～44 (マテリア～マテリラが使用可)</option>
-                            <option value="3">45～54 (マテリア～マテリダが使用可)</option>
-                            <option value="4">55～159 (マテリア～マテリガが使用可)</option>
-                            <option value="5">160～289 (マテリア～マテリジャが使用可)</option>
-                            <option value="6">290～419 (マテリア～ハイマテリジャが使用可)</option>
-                            <option value="8">420～ (マテリア～エクスマテリジャが使用可)</option>
+                            <option value="1" selected="selected">15 - 29 (Materia I is available)</option>
+                            <option value="2">30 - 44 (Materia I-II is available)</option>
+                            <option value="3">45 - 54 (Materia I-III is available)</option>
+                            <option value="4">55 - 159 (Materia I-IV is available)</option>
+                            <option value="5">160 - 289 (Materia I-V is available)</option>
+                            <option value="6">290 - 419 (Materia I-VI is available)</option>
+                            <option value="8">420 - (Materia I-VIII is available)</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <td style="text-align:right;">品質:</td>
+                    <td style="text-align:right;">Quality:</td>
                     <td>
                         <label class="radiobuttonlabelstyle">
                             <input type="radio" name="quality" value="nq" checked="checked" />
-                            NQ
+                            Normal quality
                         </label>
                         <label class="radiobuttonlabelstyle">
                             <input type="radio" name="quality" value="hq" />
-                            HQ
+                            High quality
                         </label>
                     </td>
                 </tr>
                 <tr>
-                    <td style="text-align:right;">マテリア穴の数:</td>
+                    <td style="text-align:right;">All materia slots:</td>
                     <td>
                         <select name="materiaslotcount" id="materiaslotcount">
                             <option value="1" selected="selected">1</option>
@@ -80,10 +80,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="text-align:right;">装着済みマテリアの数:</td>
+                    <td style="text-align:right;">Used slots:</td>
                     <td>
                         <select name="usedmateriacount" id="usedmateriacount">
-                            <option value="0" selected="selected">なし</option>
+                            <option value="0" selected="selected">None</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -94,20 +94,20 @@
             </table>
         </fieldset>
         <fieldset>
-            <legend>マテリア装着の設定</legend>
+            <legend>Melding materia setting</legend>
             <div>
                 <label class="radiobuttonlabelstyle">
                     <input type="radio" name="kindanallowed" value="enabled" checked="checked" />
-                    禁断のマテリア装着を考慮する
+                    Consider overmelding
                 </label>
                 <label class="radiobuttonlabelstyle">
                     <input type="radio" name="kindanallowed" value="disabled" />
-                    禁断のマテリア装着はしない
+                    Don't consider overmelding
                 </label>
             </div>
         </fieldset>
         <fieldset>
-            <legend>上げたいステータスの設定</legend>
+            <legend>Stat increasing setting</legend>
             <table>
                 <tr>
                     <td style="text-align:right;">1.</td>
@@ -116,7 +116,7 @@
                         <select name="statusvalue1" id="statusvalue1" style="display:none;"></select>
                     </td>
                     <td>
-                        <span id="statusselectionerrormessage" class="errormessageiconstyle" data-text="ステータスを選択してください。">！</span>
+                        <span id="statusselectionerrormessage" class="errormessageiconstyle" data-text="Select stat">！</span>
                     </td>
                 </tr>
                 <tr>
@@ -150,7 +150,7 @@
             </table>
         </fieldset>
         <fieldset id="itempricelistview" style="display:none;">
-            <legend>アイテムの相場の設定</legend>
+            <legend>Market price setting</legend>
             <table id="itempricelist">
                 <tbody>
                     <tr data-itemid="125" data-itemtype="c" data-itempriceavailable="false" style="display:none;">
@@ -169,39 +169,39 @@
                 </tbody>
             </table>
             <div class="itempricesettingbuttonsstyle">
-                <button id="itempriceclearbutton">クリアする</button>
-                <button id="itempriceexsamplebutton">サンプル設定</button>
+                <button id="itempriceclearbutton">Clear market price setting</button>
+                <button id="itempriceexsamplebutton">Set example values to market price</button>
             </div>
         </fieldset>
         <div style="margin-top:1em;">
-            <button id="calculatebutton" disabled="disabled">計算開始</button>
+            <button id="calculatebutton" disabled="disabled">Start Calculation</button>
         </div>
     </div>
     <div id="resultview" style="display:none;">
         <fieldset>
-            <legend>計算結果</legend>
+            <legend>Result</legend>
             <div>
-                <span>目標ステータス:</span>
+                <span>Desired Stat:</span>
                 <span id="resultdesiredstatustable"></span>
             </div>
             <div>
-                <span>合計費用(期待値):</span>
-                約 <span id="resulttotalcostvalue"></span> Gil
+                <span>Total cost(expectation):</span>
+                約 <span id="resulttotalcostvalue"></span> gil
             </div>
             <table border="1">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>装着するマテリア</th>
-                        <th>上昇するステータス</th>
-                        <th>成功率</th>
+                        <th>Melded materia</th>
+                        <th>Stat increased</th>
+                        <th>Success rate</th>
                     </tr>
                 </thead>
                 <tbody id="resultmateriastable"></tbody>
             </table>
         </fieldset>
         <fieldset id="resultwarningview" style="display:none;">
-            <legend>注意事項</legend>
+            <legend>Notes</legend>
             <div>
                 <ol>
                     <li>
@@ -210,7 +210,7 @@
             </div>
         </fieldset>
         <div>
-            <a href="#mainview" id="recalculatebutton1">設定を変更して再計算する</a>
+            <a href="#mainview" id="recalculatebutton1">Change setting and re-calculate</a>
         </div>
     </div>
     <fieldset id="generalsettingview" style="display:none;">
@@ -234,9 +234,9 @@
         </div>
     </fieldset>
     <fieldset id="outlineview" style="display:none;">
-        <legend>はじめに</legend>
+        <legend>Introduction</legend>
         <div style="margin-top:1em;">
-            <a href="#mainview">計算をする</a>
+            <a href="#mainview">Calculate</a>
         </div>
 
         <p>初めて利用される方は以下をお読みください。</p>
@@ -257,10 +257,12 @@
             <ol>
                 <li><a href="#mainview">メインページ</a>を表示してください。</li>
                 <li>「装着対象装備の設定」、「マテリア装着の設定」を入力してください。</li>
-                <li>「上げたいステータスの設定」を入力してください。<br />
+                <li>
+                    「上げたいステータスの設定」を入力してください。<br />
                     ステータスの値にはとりあえずその装備の上限値を入れてみて、計算結果が高コストすぎたり実現不可能だった場合には見直しをかければいいでしょう。
                 </li>
-                <li>「アイテムの相場の設定」でマテリアや触媒の相場を入力してください。品薄で入手が困難などの理由で使用したくないマテリアや触媒がある場合は、そのアイテムのチェックを外してください。<br />
+                <li>
+                    「アイテムの相場の設定」でマテリアや触媒の相場を入力してください。品薄で入手が困難などの理由で使用したくないマテリアや触媒がある場合は、そのアイテムのチェックを外してください。<br />
                     「クリアする」ボタンを押すと入力されているアイテムの相場がすべて消去されます。<br />
                     「サンプル設定」ボタンを押すと入力されているアイテムの相場が消去されて代わりにサンプルのアイテム相場データが自動的に入力されます。
                 </li>
@@ -268,7 +270,7 @@
             </ol>
             <p>
                 なお、簡単にお試しで使っていただけるように、マテリアの相場の初期設定としてサンプルデータ(某鯖での某月某日の相場)が設定済みになっています。<br />
-                <b>本番で計算をする場合は、ゲーム内のマーケットボードでマテリアの相場を確認し、設定をし直してください。</b> 
+                <b>本番で計算をする場合は、ゲーム内のマーケットボードでマテリアの相場を確認し、設定をし直してください。</b>
             </p>
         </fieldset>
         <fieldset>
@@ -293,7 +295,7 @@
         </fieldset>
     </fieldset>
     <fieldset id="errorview" style="display:none;">
-        <legend>エラー</legend>
+        <legend>Error</legend>
         <div>
             <p class="errormessagetextstyle">指定されたステータスを実現するマテリアの組み合わせがありません。<br />設定を見直してください。</p>
             <h1>【ヒント】</h1>
@@ -309,32 +311,30 @@
     <footer style="display:none;">
         <hr />
         <div>
-            <a href="#outlineview">はじめに</a>
+            <a href="#outlineview">Introduction</a>
             <!--<a href="#generalsettingview" style="margin-left:1em;">一般的な設定</a>-->
-            <a href="http://jp.finalfantasyxiv.com/lodestone/" style="margin-left:1em;">公式サイト</a>
+            <a href="http://jp.finalfantasyxiv.com/lodestone/" style="margin-left:1em;">Official site</a>
         </div>
         <hr />
         <div>
             <p class="copyrightblockstyle">
-                記載されている会社名・製品名・システム名などは、各社の商標、または登録商標です。<br />
-                Copyright (C) 2010 - 2020 SQUARE ENIX CO., LTD. All Rights Reserved.
+                FINAL FANTASY XIV © 2010 - 2020 SQUARE ENIX CO., LTD. All Rights Reserved.
                 /
                 Copyright (C) 2017-2020 <a href="https://github.com/rougemeilland">Palmtree Software</a> All Rights Reserved.
             </p>
             <p class="versioninfoblockstyle">
-                最終更新日: 2020年3月15日
+                Last updated: 3/15/2020
             </p>
         </div>
     </footer>
 
     <!--スクリプトから使用される、言語依存のデータ/テキスト-->
-    <input type="hidden" id="currentlanguage" value="ja" />
-    <input type="hidden" id="itempriceerrormessage_empty" value="アイテムの相場を入力してください。" />
-    <input type="hidden" id="itempriceerrormessage_badformat" value="整数で入力してください。" />
-    <input type="hidden" id="usedslottext" value="(装着済み)" />
-    <input type="hidden" id="notusedmateriatext" value="(使用しない)" />
+    <input type="hidden" id="currentlanguage" value="de" />
+    <input type="hidden" id="itempriceerrormessage_empty" value="Input market price of materia" />
+    <input type="hidden" id="itempriceerrormessage_badformat" value="Enter an integer" />
+    <input type="hidden" id="usedslottext" value="(melded)" />
+    <input type="hidden" id="notusedmateriatext" value="(unavailable)" />
     <!---->
-
     <!-- 動的に生成されたタグ(<a href="..." class="eorzeadb_link"></a>)にはツールチップは表示されないらしいので、スクリプトの読み込みは行わない。
         <script src="http://img.finalfantasyxiv.com/lds/pc/global/js/eorzeadb/loader.js?v1"></script>
     -->

@@ -92,6 +92,9 @@
       <DependentUpon>materiacalc.css</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Contents\materiacalcde.html" />
+    <Content Include="Contents\materiacalcen.html" />
+    <Content Include="Contents\materiacalcfr.html" />
     <Content Include="Contents\materiacalcja.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

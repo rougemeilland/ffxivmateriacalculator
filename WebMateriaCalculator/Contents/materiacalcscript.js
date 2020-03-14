@@ -758,8 +758,8 @@
 */
 
 (function () {
-    // �^�t���z���fill��set�Asubarray���T�|�[�g����Ă��Ȃ��u���E�U�����݂��邽�߁A��֏�����ȉ��ɋL�q����B
-    // Internet Explorer�ɍЂ�����!!!
+    // 型付き配列にfillやset、subarrayがサポートされていないブラウザが存在するため、代替処理を以下に記述する。
+    // Internet Explorerに災いあれ!!!
     var __Uint8Array = Uint8Array;
     var __Uint8ArrayFromSize = function (size) { return new Uint8Array(size); };
     var __Uint8ArrayFromArray = function (array) { return new Uint8Array(array); };
@@ -791,7 +791,7 @@
         __Uint8ArrayFromArray = function (array) { return array; };
         __Uint8Array_fill = function (array, value, begin, end) { __alternativeXXArray_fill(array, value, begin, end); };
         __enabledTypedArray = false;
-        console.log("Uint8Array�ɃT�|�[�g����Ă��Ȃ����\�b�h�����邽�߁A�����Array��g�p���܂��B");
+        console.log("Uint8Arrayにサポートされていないメソッドがあるため、代わりにArrayを使用します。");
     }
     if (!Uint16Array.prototype.fill || !Uint16Array.prototype.slice) {
         __Uint16Array = Array;
@@ -799,7 +799,7 @@
         __Uint16ArrayFromArray = function (array) { return array; };
         __Uint16Array_fill = function (array, value, begin, end) { __alternativeXXArray_fill(array, value, begin, end); };
         __enabledTypedArray = false;
-        console.log("Uint16Array�ɃT�|�[�g����Ă��Ȃ����\�b�h�����邽�߁A�����Array��g�p���܂��B");
+        console.log("Uint16Arrayにサポートされていないメソッドがあるため、代わりにArrayを使用します。");
     }
     if (!Uint32Array.prototype.fill || !Uint32Array.prototype.slice) {
         __Uint32Array = Array;
@@ -807,10 +807,10 @@
         __Uint32ArrayFromArray = function (array) { return array; };
         __Uint32Array_fill = function (array, value, begin, end) { __alternativeXXArray_fill(array, value, begin, end); };
         __enabledTypedArray = false;
-        console.log("Uint32Array�ɃT�|�[�g����Ă��Ȃ����\�b�h�����邽�߁A�����Array��g�p���܂��B");
+        console.log("Uint32Arrayにサポートされていないメソッドがあるため、代わりにArrayを使用します。");
     }
 
-    // Huffman�e�[�u����\�z����B
+    // Huffmanテーブルを構築する。
     function buildHuffmanTable(lengths) {
         /** @type {number} length list size. */
         var listSize = lengths.length;
@@ -825,7 +825,7 @@
         /** @type {number} loop counter. */
         var j;
 
-        // Math.max �͒x���̂ōŒ��̒l�� for-loop �Ŏ擾����
+        // Math.max は遅いので最長の値は for-loop で取得する
         for (i = 0, il = listSize; i < il; ++i) {
             if (lengths[i] > maxCodeLength)
                 maxCodeLength = lengths[i];
@@ -843,11 +843,11 @@
         /** @type {number} huffman code. */
         var code;
         /**
-         * �T�C�Y�� 2^maxlength �̃e�[�u���𖄂߂邽�߂̃X�L�b�v��.
+         * サイズが 2^maxlength 個のテーブルを埋めるためのスキップ長.
          * @type {number} skip length for table filling.
          */
         var skip;
-        // �r�b�g���̒Z��������n�t�}����������蓖�Ă�
+        // ビット長の短い順からハフマン符号を割り当てる
         for (bitLength = 1, code = 0, skip = 2; bitLength <= maxCodeLength;) {
             for (i = 0; i < listSize; ++i) {
                 if (lengths[i] === bitLength) {
@@ -855,16 +855,16 @@
                     var reversed;
                     /** @type {number} reverse temp. */
                     var rtemp;
-                    // �r�b�g�I�[�_�[���t�ɂȂ邽�߃r�b�g�������т𔽓]����
+                    // ビットオーダーが逆になるためビット長分並びを反転する
                     for (reversed = 0, rtemp = code, j = 0; j < bitLength; ++j) {
                         reversed = reversed << 1 | rtemp & 1;
                         rtemp >>= 1;
                     }
 
-                    // �ő�r�b�g�����ƂɃe�[�u�����邽�߁A
-                    // �ő�r�b�g���ȊO�ł� 0 / 1 �ǂ���ł�ǂ��ӏ����ł���
-                    // ���̂ǂ���ł�ǂ��ꏊ�͓����l�Ŗ��߂邱�Ƃ�
-                    // �{���̃r�b�g���ȏ�̃r�b�g���擾���Ă��肪�N����Ȃ��悤�ɂ���
+                    // 最大ビット長をもとにテーブルを作るため、
+                    // 最大ビット長以外では 0 / 1 どちらでも良い箇所ができる
+                    // そのどちらでも良い場所は同じ値で埋めることで
+                    // 本来のビット長以上のビット数取得しても問題が起こらないようにする
                     /** @type {number} table value. */
                     var value = bitLength << 16 | i;
                     for (j = reversed; j < size; j += skip)
@@ -873,7 +873,7 @@
                 }
             }
 
-            // ���̃r�b�g����
+            // 次のビット長へ
             ++bitLength;
             code <<= 1;
             skip <<= 1;
@@ -882,7 +882,7 @@
         return [table, maxCodeLength, minCodeLength];
     }
 
-    // �r�b�g�}�X�N������z��B
+    // ビットマスクを示す配列。
     const bitMasks = __Uint16ArrayFromArray([
         0x0000,
         0x0001, 0x0003, 0x0007, 0x000f,
@@ -979,18 +979,18 @@
         return buildHuffmanTable(lengths);
     })();
 
-    // inflate�̃��C�����[�`���B
-    // sourceBuffer �p�����^�ɂ͈��k�ς݃f�[�^�̃o�C�g�z��(UintArray�܂���Array)���n�����B
-    // ���A�l�Ƃ��� sourceBuffer ��L�������f�[�^���Ԃ�B
-    // ���A�l�̌^�́AsourceBuffer �� Uint8Array �ł��肩�� Uint8Array �ɓ���̃��\�b�h����������Ă���� Uint8Array�A�����ł͂Ȃ��̂Ȃ� Array ���Ԃ�B
-    // <<����>>
-    // �u���E�U�ɂ���Ă� Uint8Array ����������Ă��Ă���\�b�h���ꕔ��������������Ă��Ȃ�������A
-    // Uint8Array �̃A�N�Z�X�̃p�t�H�[�}���X�ɖ�肪����悤�Ɍ������肷��B
-    // ���̂��߂ɕ��A�l�̌^������Ȃ��������Ȏd�l�ɂȂ��Ă��܂����BInternet Explorer�ɍЂ�����!!!
+    // inflateのメインルーチン。
+    // sourceBuffer パラメタには圧縮済みデータのバイト配列(UintArrayまたはArray)が渡される。
+    // 復帰値として sourceBuffer を伸長したデータが返る。
+    // 復帰値の型は、sourceBuffer が Uint8Array でありかつ Uint8Array に特定のメソッドが実装されていれば Uint8Array、そうではないのなら Array が返る。
+    // <<メモ>>
+    // ブラウザによっては Uint8Array が実装されていてもメソッドが一部分しか実装されていなかったり、
+    // Uint8Array のアクセスのパフォーマンスに問題があるように見えたりする。
+    // そのために復帰値の型がこんなけったいな仕様になってしまった。Internet Explorerに災いあれ!!!
     function internalInflate(sourceBuffer, opt) {
         if (opt === undefined)
             opt = {};
-        // destinationBuffer �̌^�̌���
+        // destinationBuffer の型の決定
         if (sourceBuffer instanceof Array) {
             destinationIsTypeArray = false;
             sourceIsTypeArray = false;
@@ -1033,7 +1033,7 @@
         var trimDestinationBuffer;
         var copyBytes;
         if (destinationIsTypeArray) {
-            // destinationBuffer �� Uint8Array �ł���ꍇ
+            // destinationBuffer が Uint8Array である場合
             var __allocateBuffer = function (size) {
                 while (destinationIndex + size > destinationBuffer.length) {
                     var newdestinationBuffer = new Uint8Array(destinationBuffer.length + (size + 1023) / 1024 * 1024);
@@ -1067,7 +1067,7 @@
                 destinationIndex += length;
             };
             trimDestinationBuffer = function () {
-                // �����ɗ]���ȗ̈悪���邩�����Ȃ��̂ŁA���f�[�^���ɐ؂�l�߂�B
+                // 末尾に余分な領域があるかもしれないので、実データ長に切り詰める。
                 destinationBuffer = destinationBuffer.slice(0, destinationIndex);
             };
             copyBytes = function (length) {
@@ -1082,7 +1082,7 @@
             };
         }
         else {
-            // destinationBuffer �� Array �ł���ꍇ
+            // destinationBuffer が Array である場合
             allocateInitialDestinationBuffer = function () { return []; };
             writeByte = function (data) {
                 if ((data & ~0xff) !== 0x00)
@@ -1104,7 +1104,7 @@
                 destinationIndex += length;
             };
             trimDestinationBuffer = function () {
-                // destinationBuffer �� Array �̏ꍇ�ɂ͖����ɗ]���ȗ̈�͂Ȃ��̂ŉ�����Ȃ��B
+                // destinationBuffer が Array の場合には末尾に余分な領域はないので何もしない。
             };
             copyBytes = function (length) {
                 if (sourceBitIndex === 0)
@@ -1119,7 +1119,7 @@
             };
         }
 
-        // ���o�͏�Ԃ̏�����
+        // 入出力状態の初期化
         var sourceByteIndex = 0;
         var sourceBitIndex = 0;
         var destinationBuffer = allocateInitialDestinationBuffer();
@@ -1378,7 +1378,7 @@
                 }
             }
             //console.log("sourceByteIndex + sourceBitIndex / 8 === " + (sourceByteIndex + sourceBitIndex / 8));
-            // sourceBuffer�̍ŏI�o�C�g�͓r���̃r�b�g�ŏI����Ă���\������邽�߁A����ɏI������ꍇ�ł�sourceByteIndex�̒l��sourceBuffer-1�ł��邱�Ƃ�����B
+            // sourceBufferの最終バイトは途中のビットで終わっている可能性もあるため、正常に終わった場合でもsourceByteIndexの値はsourceBuffer-1であることがある。
             if (sourceByteIndex + sourceBitIndex / 8 <= sourceBuffer.length - 1)
                 throw new Error("Unexpected data after FINAL");
             trimDestinationBuffer();
@@ -1390,7 +1390,7 @@
             while (!parseBlock())
                 ;
             //console.log("sourceByteIndex + sourceBitIndex / 8 === " + (sourceByteIndex + sourceBitIndex / 8));
-            // sourceBuffer�̍ŏI�o�C�g�͓r���̃r�b�g�ŏI����Ă���\������邽�߁A����ɏI������ꍇ�ł�sourceByteIndex�̒l��sourceBuffer-1�ł��邱�Ƃ�����B
+            // sourceBufferの最終バイトは途中のビットで終わっている可能性もあるため、正常に終わった場合でもsourceByteIndexの値はsourceBuffer-1であることがある。
             if (sourceByteIndex + sourceBitIndex / 8 <= sourceBuffer.length - 1)
                 throw new Error("Unexpected data after FINAL");
             trimDestinationBuffer();

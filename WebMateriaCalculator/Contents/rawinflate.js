@@ -1,4 +1,4 @@
-/*
+ï»¿/*
   rawinflate.js
 
   Copyright (c) 2017 Palmtree Software
@@ -8,8 +8,8 @@
 */
 
 (function () {
-    // Œ^•t‚«”z—ñ‚Éfill‚âsetAsubarray‚ªƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚È‚¢ƒuƒ‰ƒEƒU‚ª‘¶İ‚·‚é‚½‚ßA‘ã‘Öˆ—‚ğˆÈ‰º‚É‹Lq‚·‚éB
-    // Internet Explorer‚ÉĞ‚¢‚ ‚ê!!!
+    // å‹ä»˜ãé…åˆ—ã«fillã‚„setã€subarrayãŒã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„ãƒ–ãƒ©ã‚¦ã‚¶ãŒå­˜åœ¨ã™ã‚‹ãŸã‚ã€ä»£æ›¿å‡¦ç†ã‚’ä»¥ä¸‹ã«è¨˜è¿°ã™ã‚‹ã€‚
+    // Internet Explorerã«ç½ã„ã‚ã‚Œ!!!
     var __Uint8Array = Uint8Array;
     var __Uint8ArrayFromSize = function (size) { return new Uint8Array(size); };
     var __Uint8ArrayFromArray = function (array) { return new Uint8Array(array); };
@@ -41,7 +41,7 @@
         __Uint8ArrayFromArray = function (array) { return array; };
         __Uint8Array_fill = function (array, value, begin, end) { __alternativeXXArray_fill(array, value, begin, end); };
         __enabledTypedArray = false;
-        console.log("Uint8Array‚ÉƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚È‚¢ƒƒ\ƒbƒh‚ª‚ ‚é‚½‚ßA‘ã‚í‚è‚ÉArray‚ğg—p‚µ‚Ü‚·B");
+        console.log("Uint8Arrayã«ã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„ãƒ¡ã‚½ãƒƒãƒ‰ãŒã‚ã‚‹ãŸã‚ã€ä»£ã‚ã‚Šã«Arrayã‚’ä½¿ç”¨ã—ã¾ã™ã€‚");
     }
     if (!Uint16Array.prototype.fill || !Uint16Array.prototype.slice) {
         __Uint16Array = Array;
@@ -49,7 +49,7 @@
         __Uint16ArrayFromArray = function (array) { return array; };
         __Uint16Array_fill = function (array, value, begin, end) { __alternativeXXArray_fill(array, value, begin, end); };
         __enabledTypedArray = false;
-        console.log("Uint16Array‚ÉƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚È‚¢ƒƒ\ƒbƒh‚ª‚ ‚é‚½‚ßA‘ã‚í‚è‚ÉArray‚ğg—p‚µ‚Ü‚·B");
+        console.log("Uint16Arrayã«ã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„ãƒ¡ã‚½ãƒƒãƒ‰ãŒã‚ã‚‹ãŸã‚ã€ä»£ã‚ã‚Šã«Arrayã‚’ä½¿ç”¨ã—ã¾ã™ã€‚");
     }
     if (!Uint32Array.prototype.fill || !Uint32Array.prototype.slice) {
         __Uint32Array = Array;
@@ -57,10 +57,10 @@
         __Uint32ArrayFromArray = function (array) { return array; };
         __Uint32Array_fill = function (array, value, begin, end) { __alternativeXXArray_fill(array, value, begin, end); };
         __enabledTypedArray = false;
-        console.log("Uint32Array‚ÉƒTƒ|[ƒg‚³‚ê‚Ä‚¢‚È‚¢ƒƒ\ƒbƒh‚ª‚ ‚é‚½‚ßA‘ã‚í‚è‚ÉArray‚ğg—p‚µ‚Ü‚·B");
+        console.log("Uint32Arrayã«ã‚µãƒãƒ¼ãƒˆã•ã‚Œã¦ã„ãªã„ãƒ¡ã‚½ãƒƒãƒ‰ãŒã‚ã‚‹ãŸã‚ã€ä»£ã‚ã‚Šã«Arrayã‚’ä½¿ç”¨ã—ã¾ã™ã€‚");
     }
 
-    // Huffmanƒe[ƒuƒ‹‚ğ\’z‚·‚éB
+    // Huffmanãƒ†ãƒ¼ãƒ–ãƒ«ã‚’æ§‹ç¯‰ã™ã‚‹ã€‚
     function buildHuffmanTable(lengths) {
         /** @type {number} length list size. */
         var listSize = lengths.length;
@@ -75,7 +75,7 @@
         /** @type {number} loop counter. */
         var j;
 
-        // Math.max ‚Í’x‚¢‚Ì‚ÅÅ’·‚Ì’l‚Í for-loop ‚Åæ“¾‚·‚é
+        // Math.max ã¯é…ã„ã®ã§æœ€é•·ã®å€¤ã¯ for-loop ã§å–å¾—ã™ã‚‹
         for (i = 0, il = listSize; i < il; ++i) {
             if (lengths[i] > maxCodeLength)
                 maxCodeLength = lengths[i];
@@ -93,11 +93,11 @@
         /** @type {number} huffman code. */
         var code;
         /**
-         * ƒTƒCƒY‚ª 2^maxlength ŒÂ‚Ìƒe[ƒuƒ‹‚ğ–„‚ß‚é‚½‚ß‚ÌƒXƒLƒbƒv’·.
+         * ã‚µã‚¤ã‚ºãŒ 2^maxlength å€‹ã®ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’åŸ‹ã‚ã‚‹ãŸã‚ã®ã‚¹ã‚­ãƒƒãƒ—é•·.
          * @type {number} skip length for table filling.
          */
         var skip;
-        // ƒrƒbƒg’·‚Ì’Z‚¢‡‚©‚çƒnƒtƒ}ƒ“•„†‚ğŠ„‚è“–‚Ä‚é
+        // ãƒ“ãƒƒãƒˆé•·ã®çŸ­ã„é †ã‹ã‚‰ãƒãƒ•ãƒãƒ³ç¬¦å·ã‚’å‰²ã‚Šå½“ã¦ã‚‹
         for (bitLength = 1, code = 0, skip = 2; bitLength <= maxCodeLength;) {
             for (i = 0; i < listSize; ++i) {
                 if (lengths[i] === bitLength) {
@@ -105,16 +105,16 @@
                     var reversed;
                     /** @type {number} reverse temp. */
                     var rtemp;
-                    // ƒrƒbƒgƒI[ƒ_[‚ª‹t‚É‚È‚é‚½‚ßƒrƒbƒg’·•ª•À‚Ñ‚ğ”½“]‚·‚é
+                    // ãƒ“ãƒƒãƒˆã‚ªãƒ¼ãƒ€ãƒ¼ãŒé€†ã«ãªã‚‹ãŸã‚ãƒ“ãƒƒãƒˆé•·åˆ†ä¸¦ã³ã‚’åè»¢ã™ã‚‹
                     for (reversed = 0, rtemp = code, j = 0; j < bitLength; ++j) {
                         reversed = reversed << 1 | rtemp & 1;
                         rtemp >>= 1;
                     }
 
-                    // Å‘åƒrƒbƒg’·‚ğ‚à‚Æ‚Éƒe[ƒuƒ‹‚ğì‚é‚½‚ßA
-                    // Å‘åƒrƒbƒg’·ˆÈŠO‚Å‚Í 0 / 1 ‚Ç‚¿‚ç‚Å‚à—Ç‚¢‰ÓŠ‚ª‚Å‚«‚é
-                    // ‚»‚Ì‚Ç‚¿‚ç‚Å‚à—Ç‚¢êŠ‚Í“¯‚¶’l‚Å–„‚ß‚é‚±‚Æ‚Å
-                    // –{—ˆ‚Ìƒrƒbƒg’·ˆÈã‚Ìƒrƒbƒg”æ“¾‚µ‚Ä‚à–â‘è‚ª‹N‚±‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+                    // æœ€å¤§ãƒ“ãƒƒãƒˆé•·ã‚’ã‚‚ã¨ã«ãƒ†ãƒ¼ãƒ–ãƒ«ã‚’ä½œã‚‹ãŸã‚ã€
+                    // æœ€å¤§ãƒ“ãƒƒãƒˆé•·ä»¥å¤–ã§ã¯ 0 / 1 ã©ã¡ã‚‰ã§ã‚‚è‰¯ã„ç®‡æ‰€ãŒã§ãã‚‹
+                    // ãã®ã©ã¡ã‚‰ã§ã‚‚è‰¯ã„å ´æ‰€ã¯åŒã˜å€¤ã§åŸ‹ã‚ã‚‹ã“ã¨ã§
+                    // æœ¬æ¥ã®ãƒ“ãƒƒãƒˆé•·ä»¥ä¸Šã®ãƒ“ãƒƒãƒˆæ•°å–å¾—ã—ã¦ã‚‚å•é¡ŒãŒèµ·ã“ã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
                     /** @type {number} table value. */
                     var value = bitLength << 16 | i;
                     for (j = reversed; j < size; j += skip)
@@ -123,7 +123,7 @@
                 }
             }
 
-            // Ÿ‚Ìƒrƒbƒg’·‚Ö
+            // æ¬¡ã®ãƒ“ãƒƒãƒˆé•·ã¸
             ++bitLength;
             code <<= 1;
             skip <<= 1;
@@ -132,7 +132,7 @@
         return [table, maxCodeLength, minCodeLength];
     }
 
-    // ƒrƒbƒgƒ}ƒXƒN‚ğ¦‚·”z—ñB
+    // ãƒ“ãƒƒãƒˆãƒã‚¹ã‚¯ã‚’ç¤ºã™é…åˆ—ã€‚
     const bitMasks = __Uint16ArrayFromArray([
         0x0000,
         0x0001, 0x0003, 0x0007, 0x000f,
@@ -229,18 +229,18 @@
         return buildHuffmanTable(lengths);
     })();
 
-    // inflate‚ÌƒƒCƒ“ƒ‹[ƒ`ƒ“B
-    // sourceBuffer ƒpƒ‰ƒƒ^‚É‚Íˆ³kÏ‚İƒf[ƒ^‚ÌƒoƒCƒg”z—ñ(UintArray‚Ü‚½‚ÍArray)‚ª“n‚³‚ê‚éB
-    // •œ‹A’l‚Æ‚µ‚Ä sourceBuffer ‚ğL’·‚µ‚½ƒf[ƒ^‚ª•Ô‚éB
-    // •œ‹A’l‚ÌŒ^‚ÍAsourceBuffer ‚ª Uint8Array ‚Å‚ ‚è‚©‚Â Uint8Array ‚É“Á’è‚Ìƒƒ\ƒbƒh‚ªÀ‘•‚³‚ê‚Ä‚¢‚ê‚Î Uint8ArrayA‚»‚¤‚Å‚Í‚È‚¢‚Ì‚È‚ç Array ‚ª•Ô‚éB
-    // <<ƒƒ‚>>
-    // ƒuƒ‰ƒEƒU‚É‚æ‚Á‚Ä‚Í Uint8Array ‚ªÀ‘•‚³‚ê‚Ä‚¢‚Ä‚àƒƒ\ƒbƒh‚ªˆê•”•ª‚µ‚©À‘•‚³‚ê‚Ä‚¢‚È‚©‚Á‚½‚èA
-    // Uint8Array ‚ÌƒAƒNƒZƒX‚ÌƒpƒtƒH[ƒ}ƒ“ƒX‚É–â‘è‚ª‚ ‚é‚æ‚¤‚ÉŒ©‚¦‚½‚è‚·‚éB
-    // ‚»‚Ì‚½‚ß‚É•œ‹A’l‚ÌŒ^‚ª‚±‚ñ‚È‚¯‚Á‚½‚¢‚Èd—l‚É‚È‚Á‚Ä‚µ‚Ü‚Á‚½BInternet Explorer‚ÉĞ‚¢‚ ‚ê!!!
+    // inflateã®ãƒ¡ã‚¤ãƒ³ãƒ«ãƒ¼ãƒãƒ³ã€‚
+    // sourceBuffer ãƒ‘ãƒ©ãƒ¡ã‚¿ã«ã¯åœ§ç¸®æ¸ˆã¿ãƒ‡ãƒ¼ã‚¿ã®ãƒã‚¤ãƒˆé…åˆ—(UintArrayã¾ãŸã¯Array)ãŒæ¸¡ã•ã‚Œã‚‹ã€‚
+    // å¾©å¸°å€¤ã¨ã—ã¦ sourceBuffer ã‚’ä¼¸é•·ã—ãŸãƒ‡ãƒ¼ã‚¿ãŒè¿”ã‚‹ã€‚
+    // å¾©å¸°å€¤ã®å‹ã¯ã€sourceBuffer ãŒ Uint8Array ã§ã‚ã‚Šã‹ã¤ Uint8Array ã«ç‰¹å®šã®ãƒ¡ã‚½ãƒƒãƒ‰ãŒå®Ÿè£…ã•ã‚Œã¦ã„ã‚Œã° Uint8Arrayã€ãã†ã§ã¯ãªã„ã®ãªã‚‰ Array ãŒè¿”ã‚‹ã€‚
+    // <<ãƒ¡ãƒ¢>>
+    // ãƒ–ãƒ©ã‚¦ã‚¶ã«ã‚ˆã£ã¦ã¯ Uint8Array ãŒå®Ÿè£…ã•ã‚Œã¦ã„ã¦ã‚‚ãƒ¡ã‚½ãƒƒãƒ‰ãŒä¸€éƒ¨åˆ†ã—ã‹å®Ÿè£…ã•ã‚Œã¦ã„ãªã‹ã£ãŸã‚Šã€
+    // Uint8Array ã®ã‚¢ã‚¯ã‚»ã‚¹ã®ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã«å•é¡ŒãŒã‚ã‚‹ã‚ˆã†ã«è¦‹ãˆãŸã‚Šã™ã‚‹ã€‚
+    // ãã®ãŸã‚ã«å¾©å¸°å€¤ã®å‹ãŒã“ã‚“ãªã‘ã£ãŸã„ãªä»•æ§˜ã«ãªã£ã¦ã—ã¾ã£ãŸã€‚Internet Explorerã«ç½ã„ã‚ã‚Œ!!!
     function internalInflate(sourceBuffer, opt) {
         if (opt === undefined)
             opt = {};
-        // destinationBuffer ‚ÌŒ^‚ÌŒˆ’è
+        // destinationBuffer ã®å‹ã®æ±ºå®š
         if (sourceBuffer instanceof Array) {
             destinationIsTypeArray = false;
             sourceIsTypeArray = false;
@@ -283,7 +283,7 @@
         var trimDestinationBuffer;
         var copyBytes;
         if (destinationIsTypeArray) {
-            // destinationBuffer ‚ª Uint8Array ‚Å‚ ‚éê‡
+            // destinationBuffer ãŒ Uint8Array ã§ã‚ã‚‹å ´åˆ
             var __allocateBuffer = function (size) {
                 while (destinationIndex + size > destinationBuffer.length) {
                     var newdestinationBuffer = new Uint8Array(destinationBuffer.length + (size + 1023) / 1024 * 1024);
@@ -317,7 +317,7 @@
                 destinationIndex += length;
             };
             trimDestinationBuffer = function () {
-                // ––”ö‚É—]•ª‚È—Ìˆæ‚ª‚ ‚é‚©‚à‚µ‚ê‚È‚¢‚Ì‚ÅAÀƒf[ƒ^’·‚ÉØ‚è‹l‚ß‚éB
+                // æœ«å°¾ã«ä½™åˆ†ãªé ˜åŸŸãŒã‚ã‚‹ã‹ã‚‚ã—ã‚Œãªã„ã®ã§ã€å®Ÿãƒ‡ãƒ¼ã‚¿é•·ã«åˆ‡ã‚Šè©°ã‚ã‚‹ã€‚
                 destinationBuffer = destinationBuffer.slice(0, destinationIndex);
             };
             copyBytes = function (length) {
@@ -332,7 +332,7 @@
             };
         }
         else {
-            // destinationBuffer ‚ª Array ‚Å‚ ‚éê‡
+            // destinationBuffer ãŒ Array ã§ã‚ã‚‹å ´åˆ
             allocateInitialDestinationBuffer = function () { return []; };
             writeByte = function (data) {
                 if ((data & ~0xff) !== 0x00)
@@ -354,7 +354,7 @@
                 destinationIndex += length;
             };
             trimDestinationBuffer = function () {
-                // destinationBuffer ‚ª Array ‚Ìê‡‚É‚Í––”ö‚É—]•ª‚È—Ìˆæ‚Í‚È‚¢‚Ì‚Å‰½‚à‚µ‚È‚¢B
+                // destinationBuffer ãŒ Array ã®å ´åˆã«ã¯æœ«å°¾ã«ä½™åˆ†ãªé ˜åŸŸã¯ãªã„ã®ã§ä½•ã‚‚ã—ãªã„ã€‚
             };
             copyBytes = function (length) {
                 if (sourceBitIndex === 0)
@@ -369,7 +369,7 @@
             };
         }
 
-        // “üo—Íó‘Ô‚Ì‰Šú‰»
+        // å…¥å‡ºåŠ›çŠ¶æ…‹ã®åˆæœŸåŒ–
         var sourceByteIndex = 0;
         var sourceBitIndex = 0;
         var destinationBuffer = allocateInitialDestinationBuffer();
@@ -628,7 +628,7 @@
                 }
             }
             //console.log("sourceByteIndex + sourceBitIndex / 8 === " + (sourceByteIndex + sourceBitIndex / 8));
-            // sourceBuffer‚ÌÅIƒoƒCƒg‚Í“r’†‚Ìƒrƒbƒg‚ÅI‚í‚Á‚Ä‚¢‚é‰Â”\«‚à‚ ‚é‚½‚ßA³í‚ÉI‚í‚Á‚½ê‡‚Å‚àsourceByteIndex‚Ì’l‚ÍsourceBuffer-1‚Å‚ ‚é‚±‚Æ‚ª‚ ‚éB
+            // sourceBufferã®æœ€çµ‚ãƒã‚¤ãƒˆã¯é€”ä¸­ã®ãƒ“ãƒƒãƒˆã§çµ‚ã‚ã£ã¦ã„ã‚‹å¯èƒ½æ€§ã‚‚ã‚ã‚‹ãŸã‚ã€æ­£å¸¸ã«çµ‚ã‚ã£ãŸå ´åˆã§ã‚‚sourceByteIndexã®å€¤ã¯sourceBuffer-1ã§ã‚ã‚‹ã“ã¨ãŒã‚ã‚‹ã€‚
             if (sourceByteIndex + sourceBitIndex / 8 <= sourceBuffer.length - 1)
                 throw new Error("Unexpected data after FINAL");
             trimDestinationBuffer();
@@ -640,7 +640,7 @@
             while (!parseBlock())
                 ;
             //console.log("sourceByteIndex + sourceBitIndex / 8 === " + (sourceByteIndex + sourceBitIndex / 8));
-            // sourceBuffer‚ÌÅIƒoƒCƒg‚Í“r’†‚Ìƒrƒbƒg‚ÅI‚í‚Á‚Ä‚¢‚é‰Â”\«‚à‚ ‚é‚½‚ßA³í‚ÉI‚í‚Á‚½ê‡‚Å‚àsourceByteIndex‚Ì’l‚ÍsourceBuffer-1‚Å‚ ‚é‚±‚Æ‚ª‚ ‚éB
+            // sourceBufferã®æœ€çµ‚ãƒã‚¤ãƒˆã¯é€”ä¸­ã®ãƒ“ãƒƒãƒˆã§çµ‚ã‚ã£ã¦ã„ã‚‹å¯èƒ½æ€§ã‚‚ã‚ã‚‹ãŸã‚ã€æ­£å¸¸ã«çµ‚ã‚ã£ãŸå ´åˆã§ã‚‚sourceByteIndexã®å€¤ã¯sourceBuffer-1ã§ã‚ã‚‹ã“ã¨ãŒã‚ã‚‹ã€‚
             if (sourceByteIndex + sourceBitIndex / 8 <= sourceBuffer.length - 1)
                 throw new Error("Unexpected data after FINAL");
             trimDestinationBuffer();

@@ -20,8 +20,12 @@
     display:inline-block;
     text-align:right;
 }
+#calculatebutton {
+    font-weight: bold;
+    font-size: large;
+}
 .priceheaderstyle {
-    text-align:right;
+    text-align: right;
 }
 .priceboxstyle {
     width:6em;
@@ -99,6 +103,9 @@ width: 100%;
 .versioninfoblockstyle {
     font-size: 70%;
     margin-left: 1em;
+}
+.languagesettingstyle {
+    text-align: right;
 }
 table {
     border-collapse: collapse;
